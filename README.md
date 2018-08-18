@@ -6,4 +6,9 @@
 </p>
 
 
-Polymodes for __FIXME__.
+Polymodes for [erb](https://puppet.com/docs/puppet/5.0/lang_template_erb.html) family of templates. Currently defines the following modes:
+
+  - `poly-coffee+erb-mode`
+  - `poly-js+erb-mode`
+  - `poly-html+erb-mode`
+
