@@ -35,17 +35,16 @@
 ;;
 ;;; Code:
 
-
 (require 'polymode)
-;; (require 'ruby-mode)
+(require 'ruby-mode)
 
 (defcustom pm-inner/erb
-  (pm-inner-chunkmode "erb"
+  (pm-inner-chunkmode :object-name "erb"
                       :mode 'ruby-mode
                       :head-matcher  "\"?\<\% *[-=]?"
                       :tail-matcher  "\%\>\"?")
   "Erb typical chunk."
-  :group 'innermodes
+  :group 'poly-inner-modes
   :type 'object)
 
 ;;;###autoload  (autoload 'poly-coffee+erb-mode "poly-erb")
@@ -63,5 +62,8 @@
   :hostmode 'pm-host/html
   :innermode 'pm-inner/erb)
 
+(add-to-list 'auto-mode-alist '("\\.js.erb$" . poly-javascript+erb-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee.erb$" . poly-coffee+erb-mode))
+(add-to-list 'auto-mode-alist '("\\.html.erb$" . poly-html+erb-mode))
+
 (provide 'poly-erb)
-;;; poly-erb.el ends here
