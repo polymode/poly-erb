@@ -39,7 +39,7 @@
 (require 'ruby-mode)
 
 (defcustom pm-inner/erb
-  (pm-inner-chunkmode :object-name "erb"
+  (pm-inner-chunkmode :name "erb"
                       :mode 'ruby-mode
                       :head-matcher  "\"?\<\% *[-=]?"
                       :tail-matcher  "\%\>\"?")
@@ -60,7 +60,7 @@
 ;;;###autoload  (autoload 'poly-html+erb-mode "poly-erb")
 (define-polymode poly-html+erb-mode
   :hostmode 'pm-host/html
-  :innermode 'pm-inner/erb)
+  :innermodes '(pm-inner/erb))
 
 (add-to-list 'auto-mode-alist '("\\.js.erb$" . poly-javascript+erb-mode))
 (add-to-list 'auto-mode-alist '("\\.coffee.erb$" . poly-coffee+erb-mode))
