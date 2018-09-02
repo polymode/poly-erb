@@ -44,7 +44,7 @@
                       :head-matcher  "\"?\<\% *[-=]?"
                       :tail-matcher  "\%\>\"?")
   "Erb typical chunk."
-  :group 'poly-inner-modes
+  :group 'poly-innermodes
   :type 'object)
 
 ;;;###autoload  (autoload 'poly-coffee+erb-mode "poly-erb")
