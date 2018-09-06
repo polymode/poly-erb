@@ -62,7 +62,7 @@
   :hostmode 'pm-host/html
   :innermodes '(pm-inner/erb))
 
-(add-to-list 'auto-mode-alist '("\\.js.erb$" . poly-javascript+erb-mode))
+(add-to-list 'auto-mode-alist '("\\.js.erb$" . poly-js+erb-mode))
 (add-to-list 'auto-mode-alist '("\\.coffee.erb$" . poly-coffee+erb-mode))
 (add-to-list 'auto-mode-alist '("\\.html.erb$" . poly-html+erb-mode))
 
