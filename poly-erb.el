@@ -37,12 +37,41 @@
 
 (require 'polymode)
 (require 'ruby-mode)
+(require 'regexp-opt)
+
+(defvar poly-erb-cond-end-regexp
+  (concat "[ \t]*" (regexp-opt '("end" "else" "elsif" "when"))))
+(defvar poly-erb-cond-beg-regexp
+  (concat "\\(.* do\\)\\|[ \t]*" (regexp-opt '("when" "if" "else" "elsif" "unless"
+                                               "for" "while" "def" "class"))))
+
+(defun poly-erb-post-indent-offset ()
+  "Compute the indent offset of the line following ruby tail."
+  (let ((bol (point-at-bol)))
+    (pm-goto-span-of-type 'body -1)
+    (goto-char (max bol (point))))
+  (goto-char (max (point-at-bol) (point)))
+  (if (looking-at-p poly-erb-cond-beg-regexp)
+      ruby-indent-level
+    0))
+
+(defun poly-erb-pre-indent-offset ()
+  "Compute the indent offset of head ruby line."
+  (let ((eol (point-at-eol)))
+    (pm-goto-span-of-type 'body 1)
+    (if (> (point) eol)
+        0
+      (if (looking-at-p poly-erb-cond-end-regexp)
+          (- ruby-indent-level)
+        0))))
 
 (defcustom pm-inner/erb
   (pm-inner-chunkmode :name "erb"
                       :mode 'ruby-mode
                       :head-matcher  "\"?\<\% *[-=]?"
-                      :tail-matcher  "\%\>\"?")
+                      :tail-matcher  "\%\>\"?"
+                      :pre-indent-offset #'poly-erb-pre-indent-offset
+                      :post-indent-offset #'poly-erb-post-indent-offset)
   "Erb typical chunk."
   :group 'poly-innermodes
   :type 'object)
