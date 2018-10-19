@@ -46,7 +46,7 @@ start: version melpa
 startvs: version
 	$(EMACSRUN) -L . \
 		--load targets/local.el \
-		--load tests/*.el --load ~/.eBasic.el
+		--load tests/*.el --load ~/.eBasic.el --file ~/dev/poly-erb/samples/web-mode-test.html.erb
 
 test: version
 	@echo "******************* Testing $(MODULE) ***************************"

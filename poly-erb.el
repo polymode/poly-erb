@@ -35,6 +35,11 @@
 ;;
 ;;; Code:
 
+;; Due to unprotected HTML indent which parses ruby code for angle brackets when
+;; ruby code contains such brakets (inequality signs) some lines might not be
+;; indented correctly. Trivial fix is to either add -indent or +indent cookie on
+;; a line, or add matching angle brakets in ruby comments.
+
 (require 'polymode)
 (require 'ruby-mode)
 (require 'regexp-opt)

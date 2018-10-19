@@ -3,6 +3,11 @@
 (require 'poly-erb)
 (require 'polymode-test-utils)
 
+(ert-deftest poly-erb/indentation-application ()
+  (pm-test-file-indent poly-html+erb-mode "application.html.erb"))
+
+(ert-deftest poly-erb/indentation-web-mode ()
+  (pm-test-file-indent poly-html+erb-mode "web-mode-test.html.erb"))
 
 ;; (ert-deftest poly-html+erb/spans-at-borders ()
 ;;   (pm-test-run-on-file poly-html+erb-mode "web-mode-test.html.erb"
