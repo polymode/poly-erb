@@ -1,7 +1,6 @@
 
 <!-- Test example from https://github.com/fxbois/web-mode/blob/master/tests/test.erb -->
 
-
 <% unless @starred_stories.empty? %>
   <% if @starred_stories.total_pages > 1 %>
     <%= render_js :stories, { stories: @starred_stories } %>
@@ -48,7 +47,6 @@
   <% end %>
 </div>
 
-
 <%
 if foo
   puts "foo"
@@ -89,13 +87,11 @@ else
   puts "I can't guess the number"
 end
 %>
+<!-- -indent -->
 
-<!-- fixme: one unsolved issue here -->
-  <% if request.xhr?
-  %>
+<% if request.xhr? %>
   <div class="reloadable"></div>
 <% end %>
-
 
 <div>
   <% if request.xhr? %>
@@ -111,7 +107,6 @@ end
     <%= link_to(q.question_answers_url) %>  </br>
   <% end %>
 <% end %>
-
 
 <ul>
   <% for @item in @shopping_list %>
