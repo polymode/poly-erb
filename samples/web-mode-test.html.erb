@@ -10,10 +10,10 @@
 
 <div>
   <%= mail_to("",
-              "Email to a friend",
-              :subject => @listing.display_title,
-              body: "I found this listing online, and thought you might be interested:\n#{@listing.url}",
-              :class => 'mail') %>
+         "Email to a friend",
+         :subject => @listing.display_title,
+         body: "I found this listing online, and thought you might be interested:\n#{@listing.url}",
+         :class => 'mail') %>
 </div>
 
 <div>
@@ -90,7 +90,9 @@ else
 end
 %>
 
-<% if request.xhr? %>
+<!-- fixme: one unsolved issue here -->
+  <% if request.xhr?
+  %>
   <div class="reloadable"></div>
 <% end %>
 
