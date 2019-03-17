@@ -70,34 +70,28 @@
           (- ruby-indent-level)
         0))))
 
-(defcustom pm-inner/erb
-  (pm-inner-chunkmode :name "erb"
-                      :mode 'ruby-mode
-                      :head-matcher  "\"?\<\% *[-=]?"
-                      :tail-matcher  "\%\>\"?"
-                      :pre-indent-offset #'poly-erb-pre-indent-offset
-                      :post-indent-offset #'poly-erb-post-indent-offset)
-  "Erb typical chunk."
-  :group 'poly-innermodes
-  :type 'object)
+(define-obsolete-variable-alias 'pm-inner/erb 'poly-erb-innermode "v0.2")
+(define-innermode poly-erb-innermode
+  :mode 'ruby-mode
+  :head-matcher  "\"?\<\% *[-=]?"
+  :tail-matcher  "\%\>\"?"
+  :pre-indent-offset #'poly-erb-pre-indent-offset
+  :post-indent-offset #'poly-erb-post-indent-offset)
 
 ;;;###autoload  (autoload 'poly-coffee+erb-mode "poly-erb")
-(define-polymode poly-coffee+erb-mode
-  :hostmode 'pm-host/coffee
-  :innermodes '(pm-inner/erb))
+(define-polymode poly-coffee+erb-mode poly-coffee-root-polymode
+  :innermodes '(poly-erb-innermode))
 
 ;;;###autoload
-(define-polymode poly-js+erb-mode
-  :hostmode 'pm-host/js
-  :innermodes '(pm-inner/erb))
+(define-polymode poly-js+erb-mode poly-js-root-polymode
+  :innermodes '(poly-erb-innermode))
 
 ;;;###autoload  (autoload 'poly-html+erb-mode "poly-erb")
-(define-polymode poly-html+erb-mode
-  :hostmode 'pm-host/html
-  :innermodes '(pm-inner/erb))
+(define-polymode poly-html+erb-mode poly-html-root-polymode
+  :innermodes '(poly-erb-innermode))
 
-(add-to-list 'auto-mode-alist '("\\.js.erb$" . poly-js+erb-mode))
-(add-to-list 'auto-mode-alist '("\\.coffee.erb$" . poly-coffee+erb-mode))
-(add-to-list 'auto-mode-alist '("\\.html.erb$" . poly-html+erb-mode))
+(add-to-list 'auto-mode-alist '("\\.js.erb\\'" . poly-js+erb-mode))
+(add-to-list 'auto-mode-alist '("\\.coffee.erb\\'" . poly-coffee+erb-mode))
+(add-to-list 'auto-mode-alist '("\\.html.erb\\'$" . poly-html+erb-mode))
 
 (provide 'poly-erb)
