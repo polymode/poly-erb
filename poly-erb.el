@@ -3,8 +3,8 @@
 ;; Author: Siavash Sajjadi and Vitalie Spinu
 ;; Maintainer: Vitalie Spinu
 ;; Copyright (C) 2018
-;; Version: 0.2
-;; Package-Requires: ((emacs "25") (polymode "0.2"))
+;; Version: 0.2.1
+;; Package-Requires: ((emacs "25") (polymode "0.2.1"))
 ;; URL: https://github.com/polymode/poly-erb
 ;; Keywords: emacs
 ;;
